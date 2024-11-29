@@ -4,6 +4,14 @@ public class Contact {
     private int confirmCode;
     public static int counter = 0;
 
+    private int calculateConfirmCode() {
+        int sum = name.charAt(0);
+        for (int number : phoneNumber) {
+            sum += number;
+        }
+        return sum % 11;
+    }
+
     public Contact(String name, int[] phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -24,12 +32,12 @@ public class Contact {
         this.confirmCode = calculateConfirmCode();
     }
 
-    private int calculateConfirmCode() {
-        int sum = name.charAt(0);
-        for (int number : phoneNumber) {
-            sum += number;
+    private static String phoneNumberToString(int[] arr) {
+        String res = "";
+        for (int num : arr) {
+            res += num;
         }
-        return sum % 11;
+        return res;
     }
 
     public static void welcome() {
@@ -38,13 +46,5 @@ public class Contact {
 
     public static int getCounter() {
         return counter;
-    }
-
-    private static String phoneNumberToString(int[] arr) {
-        String res = "";
-        for (int num : arr) {
-            res += num;
-        }
-        return res;
     }
 }
