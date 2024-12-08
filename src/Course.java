@@ -1,25 +1,26 @@
 public class Course {
-    public int duration;
+    public String name;
     public String teacher;
-    private int numOfStudents;
+    private int courseCode;
 
-    public Course (int duration, String teacher) {
-        this.duration = duration;
+    public Course (String name, String teacher) {
+        this.name = name;
         this.teacher = teacher;
+        setCourseCode();
     }
 
-    public int getNumOfStudents () {
-        return this.numOfStudents;
+    private void setCourseCode() {
+        this.courseCode = 99000 + (int) (Math.random() * 1000);
     }
 
-    public void setNumOfStudents (int numOfStudents) {
-        this.numOfStudents = numOfStudents;
+    public void setCourseCode(int code) {
+        this.courseCode = 1000 * code + (int) (Math.random() * 1000);
     }
 
     public String getCourseInfo () {
-        return "Duration: " + duration + " minutes\n"
+        return "Name: " + this.name + "\n"
                 + "Teacher: " + teacher + "\n"
-                + "Number of Students: " + numOfStudents + "\n";
+                + "Join Code: " + courseCode + "\n";
     }
 
     public static void welcome () {
